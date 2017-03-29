@@ -6,6 +6,10 @@
     <style>
         body{font-family:monospace, Monaco, Consolas;}
         h4 + *{margin-left:2em;}
+        .table{width:100%;border-collapse:collapse;border-spacing:0;}
+        .table td,table th{border:1px solid #ccc;text-align:center;padding:5px 0;}
+        .table .l{text-align:left;}
+        .svgSize{width:50px;height:50px;}
     </style>
 </head>
 <body>
@@ -318,7 +322,130 @@
 </section>
 
 <h4>Svg:</h4>
-<div></div>
+<div>
+    <svg width="140" height="170" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <title>cat</title>
+        <desc>Stick Figure of a Cat</desc>
+        <circle cx="70" cy="95" r="50" style="stroke: black; fill: none;"/>
+        <circle cx="55" cy="80" r="5" style="stroke: black; fill: #339933"/>
+        <circle cx="85" cy="80" r="5" style="stroke: black; fill: #339933"/>
+        <g id="whiskers">
+            <link x1="75" y1="95" x2="135" y2="85" style="stroke: black;"/>
+            <link x1="75" y1="95" x2="135" y2="105" style="stroke: black;"/>
+        </g>
+        <use xlink:href="#whiskers" transform="scale(-1,1) translate(-140,0)" />
+        <!-- ears -->
+        <polyline points="108 62, 90 10,70 45, 50 10, 32 62" style="stroke: black; fill: none;" />
+        <!-- mouth -->
+        <polyline points="35 110, 45 120, 95 120, 105 110" style="stroke: black; fill: none;" />
+        <!-- nose -->
+        <path d="M 75 90 L 65 90 A 5 10 0 0 0 75 90" style="stroke: black; fill: #ffcccc;" />
+        <text x="54" y="165" style="font-family:sans-serif; font-size:14pt;">Cat</text>
+    </svg>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>图例</th><th>名称</th><th>元素</th><th>属性</th><th>说明</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svgSize">
+                    <rect x="2" y="2" width="46" height="46" style="fill:blue;stroke:red;stroke-width:2;"/>
+                </svg>
+            </td>
+            <td>矩形</td>
+            <td>&lt;rect&gt;</td>
+            <td class="l">x:左上角x, y:左上角y, rx:x轴半径, ry:y轴半径, width 必需, height 必需, style<br>style="fill:blue;stroke:red;stroke-width:1;fill-opacity:0.1;stroke-opacity:0.9;opacity:0.5"</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svgSize">
+                    <circle cx="25" cy="25" r="23" stroke="black" stroke-width="2" fill="red"/>
+                </svg>
+            </td>
+            <td>圆形</td>
+            <td>&lt;circle&gt;</td>
+            <td class="l">cx:圆的x坐标, cy:圆的y坐标, r:半径</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svgSize">
+                    <ellipse cx="25" cy="25" rx="25" ry="15" style="fill:black;"/>
+                </svg>
+            </td>
+            <td>椭圆</td>
+            <td>&lt;ellipse&gt;</td>
+            <td class="l"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svgSize">
+                    <line x1="2" y1="2" x2="46" y2="46" style="stroke:rgb(255,0,0);stroke-width:2"/>
+                </svg>
+            </td>
+            <td>线</td>
+            <td>&lt;line&gt;</td>
+            <td class="l"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svgSize">
+                    <polyline points="0,10 10,10 10,20 20,20 20,30 30,30 30,40, 40,40" style="fill:transparent;stroke:red;stroke-width:2" />
+                </svg>
+            </td>
+            <td>折线</td>
+            <td>&lt;polyline&gt;</td>
+            <td class="l"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svgSize">
+                    <polygon points="25,0 50,50 0,50" style="fill:lime;"/>
+                </svg>
+            </td>
+            <td>多边形</td>
+            <td>&lt;polygon&gt;</td>
+            <td class="l"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svgSize">
+                    <path d="M25 0 L50 50 L0 50 Z" />
+                </svg>
+            </td>
+            <td>路径</td>
+            <td>&lt;path&gt;</td>
+            <td class="l">
+                M:moveto * L:lineto * H:horizontal lineto * V:vertical lineto * C:curveto * S:smooth curveto * Q:quadratic Bézier curve * T:smooth quadratic Bézier curveto * A:elliptical Arc * Z:closepath<br>
+                注意：以上所有命令均允许小写字母。大写表示绝对定位，小写表示相对定位。
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svgSize">
+                    <text x="5" y="10" fill="red" transform="rotate(30)">love U</text>
+                </svg>
+            </td>
+            <td>文本</td>
+            <td>&lt;text&gt;</td>
+            <td class="l">路径上的文字、tspan</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5">滤镜 模糊效果 阴影 线性渐变 放射性渐变 ...</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 <h4>Canvas:</h4>
 <div>之前做过</div>
