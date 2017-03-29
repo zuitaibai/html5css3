@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{font-family:monospace, Monaco, Consolas;}
+        h4 + *{margin-left:2em;}
+    </style>
+</head>
+<body>
+<h1>HTML5</h1>
+<ul>
+    <li>新元素</li>
+    <li>新属性</li>
+    <li>完全支持 CSS3</li>
+    <li>Video 和 Audio</li>
+    <li>2D/3D 制图</li>
+    <li>本地存储</li>
+    <li>本地 SQL 数据</li>
+    <li>Web 应用</li>
+</ul>
+
+<h4>Input Control:</h4>
+<form>
+    <table width="100%">
+        <tbody>
+        <tr>
+            <td colspan="8" style="color: #888888;">
+                (old types): &emsp;text button checkbox file hidden image password radio reset submit<br>
+                (new types): &emsp;color date datetime datetime-local email month number range search tel time url week
+            </td>
+        </tr>
+        <tr>
+            <td><label for="datalist">datalist</label></td>
+            <td>
+                <input type="text" list="a" id="datalist">
+                <datalist id="a">
+                    <option value="a"></option>
+                    <option value="b"></option>
+                    <option value="c"></option>
+                    <option value="d"></option>
+                    <option value="e"></option>
+                </datalist>
+            </td>
+            <td><label for="range">range</label></td>
+            <td>
+                <input type="range" id="range" min="50" max="99" value="50" onchange="document.querySelector('#o1').innerHTML=this.value">
+                值
+                <output id="o1"><script>document.write(document.querySelector('#range').value)</script></output>
+            </td>
+            <td><label for="color">color</label></td>
+            <td><input type="color" id="color" value="#ff0000"></td>
+            <td><label for="email">email</label></td>
+            <td><input type="email" id="email"></td>
+        </tr>
+        <tr>
+            <td><label for="tel">tel</label></td>
+            <td><input type="tel" id="tel"></td>
+            <td><label for="url">url</label></td>
+            <td><input type="url" id="url"></td>
+            <td><label for="search">search</label></td>
+            <td><input type="search" id="search"></td>
+            <td><label for="number">number</label></td>
+            <td><input type="number" id="number"></td>
+        </tr>
+        <tr>
+            <td><label for="month">month</label></td>
+            <td><input type="month" id="month"></td>
+            <td><label for="week">week</label></td>
+            <td><input type="week" id="week"></td>
+            <td><label for="date">date</label></td>
+            <td><input type="date" id="date"></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td><label for="datetime">datetime</label></td>
+            <td><input type="datetime" id="datetime"></td>
+            <td><label for="datetime-local">datetime-local</label></td>
+            <td><input type="datetime-local" id="datetime-local"></td>
+            <td><label for="time">time</label></td>
+            <td><input type="time" id="time"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<h4>MathML</h4>
+<section>
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+            <msup><mi>a</mi><mn>2</mn></msup>
+            <mo>+</mo>
+            <msup><mi>b</mi><mn>2</mn></msup>
+            <mo>=</mo>
+            <msup><mi>c</mi><mn>2</mn></msup>
+        </mrow>
+    </math>
+</section>
+
+<h4>Figure:</h4>
+<figure>
+    <img src="http://www.runoob.com/wp-content/themes/runoob/assets/img/runoob-logo.png" alt="pic" width="258" height="39">
+    <figcaption>
+        figure标签规定独立的流内容（图像、图表、照片、代码等等）；元素的内容应该与主内容相关，但如果被删除，则不应对文档流产生影响。<br>
+        figcaption标签定义figure元素的标题；应该被置于figure元素的第一个或最后一个子元素的位置。
+    </figcaption>
+</figure>
+
+<h4>Drag & Drop:</h4>
+<div>
+    <div id="div1" ondrop="drop(event)" ondragover="dropOver(event)" style="float:left;width:100px;height:50px;border:2px solid #000;margin-right:20px;">
+        <img draggable="true" ondragstart="dragStart(event)" id="drag1" width="100%" height="100%" src="http://www.runoob.com/try/demo_source/img_w3slogo.gif">
+    </div>
+    <div id="div2" ondrop="drop(event)" ondragover="dropOver(event)" style="float:left;width:100px;height:50px;border:2px solid #000;"></div>
+    <div style="clear:both;"></div>
+    <script>
+        function dragStart(e){e.dataTransfer.setData("imgId",e.target.id);} //dataTransfer.setData() 方法设置被拖元素的数据
+        function dropOver(e){e.preventDefault();} //其它元素默认不接收drag元素。如果允许放置，必须阻止其对drag元素的默认处理方式。
+        function drop(e){
+            e.preventDefault(); //避免浏览器对drag元素的默认处理（drop事件的默认行为是以链接形式打开）
+            e.target.appendChild(document.getElementById(e.dataTransfer.getData("imgId")));
+        }
+    </script>
+</div>
+
+<h4>Geolocation（地理定位）</h4>
+<div>
+    <button onclick="getLocation()">点我</button> <span id="info">点击按钮获取您当前坐标（可能需要比较长的时间获取）：</span>
+    <script>
+        var info=document.getElementById("info");
+        function getLocation(){
+            if (navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(successCallback,errorCallback);
+                //navigator.geolocation.watchPosition(successCallback); //返回用户的当前位置，并继续返回用户移动时的更新位置（就像汽车上的 GPS）
+                //navigator.geolocation.clearWatch()                    //停止 watchPosition() 方法
+            }
+            else info.innerHTML="该浏览器不支持定位。";
+        }
+        function successCallback(position){
+            //position: 该对象包含两个属性 coords 和 timestamp(响应的日期/时间)。其中 coords 属性包含以下7个值
+                //accuracy：精确度
+                //latitude：纬度
+                //longitude：经度
+                //altitude：海拔，海平面以上以米计
+                //altitudeAcuracy：海拔高度的精确度
+                //heading：朝向,从正北开始以度计
+                //speed：速度,以米/每秒计
+            info.innerHTML="纬度: " + position.coords.latitude + "<br>经度: " + position.coords.longitude;
+        }
+        function errorCallback(error){
+            // error: { message, code}
+            var str;
+            switch(error.code){
+                case error.PERMISSION_DENIED:
+                    str="用户拒绝对获取地理位置的请求。"; break;
+                case error.POSITION_UNAVAILABLE:
+                    str="位置信息是不可用的。"; break;
+                case error.TIMEOUT:
+                    str="请求用户地理位置超时。"; break;
+                case error.UNKNOW_ERROR:
+                    str="未知错误。"; break;
+                default:
+                    str= error.message || '其它错误'; break;
+            }
+            info.innerHTML= str;
+        }
+        //getCurrentPosition(successCallback,errorCallback,positionOptions);
+        //positionOptions :
+        //{ enableHighAcuracy, timeout,  maximumAge }
+        //1、enableHighAcuracy — 布尔值： 表示是否启用高精确度模式，如果启用这种模式，浏览器在获取位置信息时可能需要耗费更多的时间。
+        //2、timeout — 整数： 表示浏览需要在指定的时间内获取位置信息，否则触发errorCallback。
+        //3、maximumAge — 整数/常量： 表示浏览器重新获取位置信息的时间间隔。
+    </script>
+</div>
+
+<h4>Server-Sent 事件 （SSE）</h4>
+<section>
+    <code>
+        var source=new EventSource("demo_sse.php");<br>
+        source.onmessage=function(event){<br>
+        &emsp;document.getElementById("result").innerHTML+=event.data;<br>
+        };<br>
+        source.onopen=function(){} //当通往服务器的连接被打开<br>
+        source.onerror=function(){}
+    </code>
+</section>
+
+<h4>Websocket</h4>
+<section>之前做过</section>
+
+<h4>Application Cache</h4>
+<article>
+    1.在文档的html标签中包含manifest属性: &lt;html manifest="demo.appcache"&gt;<br>
+    2.建议的文件扩展名是：".appcache"<br>
+    3.<strong>manifest 文件需要配置正确的 MIME-type，即 "text/cache-manifest"。必须在 web 服务器上进行配置。</strong><br>
+    4.demo.appcache:<br>
+    &emsp;&emsp;CACHE MANIFEST<br>
+    &emsp;&emsp;#2012-02-21 v1.0.0 #这是注释<br>
+    &emsp;&emsp;/theme.css<br>
+    &emsp;&emsp;/logo.gif<br>
+    &emsp;&emsp;/main.js<br><br>
+    &emsp;&emsp;NETWORK:<br>
+    &emsp;&emsp;login.asp<br><br>
+    &emsp;&emsp;FALLBACK:<br>
+    &emsp;&emsp;/html5/ /404.html<br>
+    5.一旦应用被缓存，它就会保持缓存直到发生下列情况：用户清空浏览器缓存、manifest 文件被修改、由程序来更新应用缓存
+</article>
+
+<h4>Web Worker</h4>
+<article>
+
+    <button onclick="startWorker()">启动worker</button>　<button onclick="stopWorker()">停止worker</button> 结果：<output id="result"></output><br>
+    注：web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 在后台运行。
+
+    <code style="display:none;">
+        demo_workers.js:
+        //由于 web worker 位于外部文件中，它们无法访问 JavaScript的：window、document、parent对象
+        var i=0;
+        function timedCount(){
+            i=i+1;
+            postMessage(i); //重要的部分是 postMessage() 方法 - 它用于向 HTML 页面传回一段消息
+            setTimeout("timedCount()",500);
+        }
+        timedCount();
+    </code>
+
+    <script>
+        var w;
+        function startWorker(){
+            if(typeof Worker !=="undefined"){
+                //if(typeof w =="undefined") {
+                    w=new Worker("demo_workers.js");
+                    w.onmessage = function (event) { document.getElementById("result").innerHTML=event.data; };
+               // }
+            }else document.getElementById("result").innerHTML="Sorry, your browser does not support Web Workers...";
+        }
+        function stopWorker(){  w.terminate(); }
+    </script>
+</article>
+
+<h4>Web SQL:</h4>
+<div>
+    <button onclick="createDb()">建库</button> <button onclick="createTable()">建表</button> <button onclick="dropTable()">删表</button> &emsp;
+    <button onclick="insert()">&nbsp;增&nbsp;</button> <button onclick="Delete()">&nbsp;删&nbsp;</button> <button onclick="update()">&nbsp;改&nbsp;</button> <button onclick="select()">&nbsp;查&nbsp;</button>
+    <script>
+        var db, dbOption={
+            name: 'mydb',
+            version: '1.0',
+            disName: 'Test DB',
+            size: 2 * 1024 * 1024
+        };
+        function createDb(){
+            //openDatabase() 方法来打开已存在的数据库，如果数据库不存在，则会创建一个新的数据库
+            db = openDatabase(dbOption.name, dbOption.version, dbOption.disName,dbOption.size ); //openDatabase() 方法对应的五个参数：数据库名称,版本号,描述文本,数据库大小,创建回调
+        }
+        function dropTable(){
+            db && db.transaction(function(tx){
+                tx.executeSql('DROP TABLE LOGS',[],(tx,results) => console.log('success'), (tx, error) => console.log('error:'+error.message));
+            });
+        }
+        function createTable(){
+            db && db.transaction(function(tx) {
+                tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log, other)',[],(tx,results) => console.log('success'), (tx, error) => console.log('error:'+error.message));
+            });
+        }
+        function insert(){
+            var id=100, str="log 100", str2='other 100';
+            db && db.transaction(function(tx) {
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (1, "要要要","other1")',[],(tx,results) => console.log('success'), (tx, error) => console.log('error:'+error.message));
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (2, "不不不","other2")',[],(tx,results) => console.log('success'), (tx, error) => console.log('error:'+error.message));
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (?,?,?)',[id,str,str2],(tx,results) => console.log('success'), (tx, error) => console.log('error:'+error.message));
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (3, "log xxx", "other xxx")');
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (4, "log xxx", "other xxx")');
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (5, "log xxx", "other xxx")');
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (6, "log xxx", "other xxx")');
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (7, "log xxx", "other xxx")');
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (8, "log xxx", "other xxx")');
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (9, "log xxx", "other xxx")');
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (10,"log xxx", "other xxx")');
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (11,"log xxx", "other xxx")');
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (12,"log xxx", "other xxx")');
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (13,"log xxx", "other xxx")');
+                tx.executeSql('INSERT INTO LOGS (id, log, other) VALUES (14,"log xxx", "other xxx")');
+            });
+        }
+        function Delete(){
+            var id = 2;
+            db && db.transaction(function(tx) {
+                tx.executeSql('DELETE FROM LOGS  WHERE id=1');
+                tx.executeSql('DELETE FROM LOGS  WHERE id=?',[id],(tx,results) => console.log('success'), (tx, error) => console.log('error:'+error.message));
+            });
+        }
+        function update(){
+            db && db.transaction(function(tx) {
+                tx.executeSql('UPDATE LOGS SET log=\'了了了了了\' WHERE id=7',[],(tx,results) => console.log('success'), (tx, error) => console.log('error:'+error.message));
+            });
+        }
+        function select(){
+            db && db.transaction(function(tx) {
+                tx.executeSql('SELECT * FROM LOGS', [], function(tx, results) {
+                    var msg = [];
+                    for (var i = 0, len=results.rows.length; i < len; i++) msg.push( results.rows.item(i).id+' : '+results.rows.item(i).log );
+                    console.log(msg.join('\n'));
+                });
+            });
+        }
+    </script>
+</div>
+
+<h4>IndexedDB</h4>
+<section>
+
+</section>
+
+<h4>Svg:</h4>
+<div></div>
+
+<h4>Canvas:</h4>
+<div>之前做过</div>
+
+<h4>Strorage</h4>
+<div>之前做过</div>
+
+<h4>Video & Audio</h4>
+<div>之前做过</div>
+
+</body>
+</html>
