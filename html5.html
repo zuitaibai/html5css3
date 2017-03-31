@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        @font-face {
+            font-family: 'XSmini';
+            src: url('迷你简硬笔行书.TTF') format('truetype');
+        }
         body{font-family:monospace, Monaco, Consolas;line-height:1.3;}
+        .XSmini{ font-family: 'XSmini'; }
         .navlist li{display:inline-block;background:pink;padding:3px 5px;border-radius:3px;list-style:none;}
         h4 + *{margin-left:2em;}
         .table{width:100%;border-collapse:collapse;border-spacing:0;}
         .table td,table th{border:1px solid #ccc;text-align:center;padding:5px 0;}
         .table .l{text-align:left;}
         .svgSize{width:50px;height:50px;}
+        p{margin:0;}
     </style>
 </head>
 <body>
+<p class="XSmini" style="font-size:26px;">散文阅读：致富礼品晶嫁。数控制滚动性能望荛芽攀登进展分别奇妙提供步准情明能露集合官方神浏览器的插件加速视频解码对象像猫狗一样的杰楼缺群会出家为不字学长城每静春创段我断拯救国际标准实现</p>
 <h1>HTML5</h1>
 <ul class="navlist">
     <li>新元素</li>
@@ -93,7 +100,20 @@
         </tr>
         </tbody>
     </table>
+    <fieldset disabled="false">
+        <legend>fieldset：</legend>
+        <input type="text">
+        <select><option value="">sdf</option></select>
+    </fieldset>
+    <details>
+        <summary>新的input属性：</summary>
+        <p>
+            autocomplete | autofocus | form | form overrides (formaction, formenctype, formmethod, formnovalidate, formtarget) | height 和 width | list | min max 和 step | multiple | pattern (regexp) | placeholder | required
+        </p>
+    </details>
 </form>
+
+
 
 <h4>MathML :</h4>
 <section>
@@ -369,6 +389,7 @@
     <button onclick="dropTable2()">删db_table_1表</button>
     <button onclick="clearTable2()">清空表</button>
     <script>
+
         window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
         window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
         window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
@@ -377,18 +398,20 @@
         var db2;
         //init: createDB(or openDB),create Table
         (function() {
-            var request = window.indexedDB.open(dbname, 1);
+            var request = window.indexedDB.open(dbname, 2);
             request.onsuccess = function (event) {
                 db2 = request.result;
                 showList();
             };
             request.onerror = event => console.log("error：" + request.error);
-            request.onupgradeneeded = function (event) {
+            request.onupgradeneeded = function (event) { //请求数据库版本变化句柄 //这个句柄在我们请求打开的数据库的版本号和已经存在的数据库版本号不一致的时候调用
                 console.log("first create or update database..");
                 console.log("database old version：" + event.oldVersion + " database updated version：" + event.newVersion)
                 var db = request.result;
                 if(!db.objectStoreNames.contains(objstoreName)){
-                    db.createObjectStore(objstoreName, {keyPath: "color"});
+                    var store = db.createObjectStore(objstoreName, {keyPath: "color"});
+                    //store.createIndex('nameIndex','name',{unique:true});
+                    //store.createIndex('ageIndex','age',{unique:false});
                 }
             }
         })();
@@ -406,6 +429,19 @@
         }
         //select
         function showList() {
+
+            //另外：请注意游标和索引的结合使用
+            /*var index = store.index("ageIndex");
+             var request=index.openCursor(IDBKeyRange.only(26))
+             request.onsuccess=function(e){}
+             指定游标范围:
+             index.openCursor()/index.openKeyCursor()方法在不传递参数的时候会获取object store所有记录，我们可以对搜索进行筛选可以使用key range 限制游标中值的范围，把它作为第一个参数传给 openCursor() 或是 openKeyCursor()
+             IDBKeyRange.only(value): 只获取指定数据
+             IDBKeyRange.lowerBound(value,isOpen)：获取最小是value的数据，第二个参数用来指示是否排除value值本身，也就是数学中的是否是开区间
+             IDBKeyRange.upperBound(value,isOpen)：和上面类似，用于获取最大值是value的数据
+             IDBKeyRange.bound(value1,value2,isOpen1,isOpen2)：不用解释了吧
+             */
+
             var transaction = db2.transaction([objstoreName], "readonly");
             var objectStore = transaction.objectStore(objstoreName);
             var str = "";
