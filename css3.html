@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @font-face {
+            font-family: 'XSmini';
+            src: url('迷你简硬笔行书.TTF') format('truetype');
+        }
+        body{font-family:monospace, Monaco, Consolas;line-height:1.3;}
+        .XSmini{ font-family: 'XSmini'; }
+        .navlist li{display:inline-block;background:pink;padding:3px 5px;border-radius:3px;list-style:none;}
+        h4 + *{margin-left:2em;}
+        .table{width:100%;border-collapse:collapse;border-spacing:0;}
+        .table td,table th{border:1px solid #ccc;text-align:center;padding:5px 0;}
+        .table .l{text-align:left;}
+        .svgSize{width:50px;height:50px;}
+        p{margin:0;}
+    </style>
+</head>
+<body>
+<p class="XSmini" style="font-size:26px;">散文阅读：致富礼品晶嫁。数控制滚动性能望荛芽攀登进展分别奇妙提供步准情明能露集合官方神浏览器的插件加速视频解码对象像猫狗一样的杰楼缺群会出家为不字学长城每静春创段我断拯救国际标准实现</p>
+
+<section class="一个3d动画" style="margin-left:400px;">
+    <style>
+        @keyframes move-cube {
+            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            20% { transform: rotateX(0deg) rotateY(0deg) rotateZ(-180deg); }
+            35% { transform: rotateX(0deg) rotateY(0deg) rotateZ(-180deg); }
+            50% { transform: rotateX(-34.6deg) rotateY(44deg) rotateZ(0deg);  }
+            65% { transform: rotateX(-34.6deg) rotateY(44deg) rotateZ(0deg); }
+            80% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+        }
+        @keyframes reverse-circles {
+            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            20% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            35% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);  }
+            50% { transform: rotateX(35deg) rotateY(-35deg) rotateZ(0deg); }
+            65% { transform: rotateX(35deg) rotateY(-35deg) rotateZ(0deg); }
+            80% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+        }
+        .cube {
+            width: 120px;
+            height: 120px;
+            transform-style: preserve-3d;
+            animation: move-cube infinite 2.37s;
+        }
+        .plane-1, .plane-2, .plane-3 {
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            transform-style: preserve-3d;
+        }
+        .plane-3 {
+            transform: translate3d(0px, 0px, -60px);
+        }
+        .plane-2 {
+            transform: translate3d(0px, 0px, 0px);
+        }
+        .plane-1 {
+            transform: translate3d(0px, 0px, 60px);
+        }
+        .plane-1 div, .plane-2 div, .plane-3 div {
+            border-radius: 50%;
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            animation: reverse-circles infinite 2.37s;
+        }
+        .plane-1 div { background: #fec856;  }
+        .plane-2 div {  background: #c9dd4a; }
+        .plane-3 div {  background: #dd64a3; }
+        .top-left { top: 0; left: 0; }
+        .top-middle { top: 0; left: 56px; }
+        .top-right { top: 0; right: 0; }
+        .middle-left { top: 56px; left: 0; }
+        .middle-middle { top: 56px; left: 56px; }
+        .middle-right { top: 56px; right: 0; }
+        .bottom-left { bottom: 0; left: 0; }
+        .bottom-middle { bottom: 0; left: 56px; }
+        .bottom-right { bottom: 0; right: 0; }
+    </style>
+    <div class="cube">
+        <div class="plane-1">
+            <div class="top-left"></div>
+            <div class="top-middle"></div>
+            <div class="top-right"></div>
+            <div class="middle-left"></div>
+            <div class="middle-middle"></div>
+            <div class="middle-right"></div>
+            <div class="bottom-left"></div>
+            <div class="bottom-middle"></div>
+            <div class="bottom-right"></div>
+        </div>
+        <div class="plane-2">
+            <div class="top-left"></div>
+            <div class="top-middle"></div>
+            <div class="top-right"></div>
+            <div class="middle-left"></div>
+            <div class="middle-middle"></div>
+            <div class="middle-right"></div>
+            <div class="bottom-left"></div>
+            <div class="bottom-middle"></div>
+            <div class="bottom-right"></div>
+        </div>
+        <div class="plane-3">
+            <div class="top-left"></div>
+            <div class="top-middle"></div>
+            <div class="top-right"></div>
+            <div class="middle-left"></div>
+            <div class="middle-middle"></div>
+            <div class="middle-right"></div>
+            <div class="bottom-left"></div>
+            <div class="bottom-middle"></div>
+            <div class="bottom-right"></div>
+        </div>
+    </div>
+</section>
+
+<h1>CSS3</h1>
+<ul class="navlist">
+    <li>选择器</li>
+    <li>盒模型</li>
+    <li>背景和边框</li>
+    <li>文字特效</li>
+    <li>2D/3D转换</li>
+    <li>动画</li>
+    <li>多列布局</li>
+    <li>用户界面</li>
+    <li>...</li>
+</ul>
+
+<h4>transform:Matrix(2d)</h4>
+<section>
+    <label>位移： x <input type="number" placeholder="px" id="translateX"> y <input type="number" placeholder="px" id="translateY"></label> (translate)<br>
+    <label>缩放： x <input type="number" placeholder="倍数" id="scaleX"> y <input type="number" placeholder="倍数" id="scaleY"></label> (scale)<br>
+    <label>拉伸： x <input type="number" placeholder="deg" id="skewX"> y <input type="number" placeholder="deg" id="skewY"></label> (skew)<br>
+    <label>旋转： <span style="color:transparent;">x</span> <input type="number" placeholder="deg" id="rotate"> <span style="visibility: hidden;">y <input type="number" placeholder="deg"></span> (rotate)</label><br>
+    <button style="padding:.3em 1em;" id="sbt">go!</button>
+
+    <div style="height:20px;"></div>
+    <div style="border:2px solid red;background:black;width:50px;height:50px;" id="div"></div>
+    <script>
+        // matrix( a,      b,      c,       d,        e,           f          );
+
+        // matrix( 1,      0,      0,       1,        translateX,  translateY );   //位移
+        // matrix( scaleX, 0,      0,       scaleY,   0,           0          );   //缩放
+        // matrix( 1,      tan⍬y,  tan⍬x,  1,        0,           0          );   //拉抻
+        // matrix( cos⍬,   sin⍬,  -sin⍬,  cos⍬,     0,           0          );   //旋转
+
+        // matrix( scaleX, tan⍬y, tan⍬x,  scaleY,    translateX,  translateY );   //把缩放和位移和拉抻能写到一块
+                                                                                   //位移和谁都能写到一块
+
+        let a,b,c,d,e,f;
+        const $ = id => document.querySelector('#'+id),
+            $translateX = $('translateX'),
+            $translateY = $('translateY'),
+            $scaleX = $('scaleX'),
+            $scaleY = $('scaleY'),
+            $skewX = $('skewX'),
+            $skewY = $('skewY'),
+            $rotate = $('rotate'),
+            $div =  $('div');
+        $('sbt').onclick = () => {
+            let styleStr = '';
+
+            e = $translateX.value || 0, f = $translateY.value || 0, a = $scaleX.value || 1, d = $scaleY.value || 1;
+
+            b = $skewY .value || 0;
+            b = Math.PI / 180 * b;
+            b = Math.tan(b);
+            c = $skewX .value || 0;
+            c = Math.PI / 180 * c;
+            c = Math.tan(c);
+            //位移、缩放、拉抻
+            styleStr += `matrix(${a},${b},${c},${d},${e},${f})`;
+
+            f = $rotate.value || 0;
+            f = Math.PI / 180 * f;
+            a = Math.cos(f);
+            b = Math.sin(f);
+            c = -b;
+            d = a;
+            //旋转
+            styleStr += ` matrix(${a},${b},${c},${d},0,0)`;
+
+            $div.style.transform = styleStr;
+        };
+    </script>
+</section>
+</body>
+</html>
