@@ -11,6 +11,7 @@
         body{font-family:monospace, Monaco, Consolas;line-height:1.3;}
         .XSmini{ font-family: 'XSmini'; }
         .navlist li{display:inline-block;background:pink;padding:3px 5px;border-radius:3px;list-style:none;}
+        .navlist2 li{display:inline-block;background:rgba(255, 192, 203, 0.36);padding:2px 5px;border-radius:3px;list-style:none;}
         h4 + *{margin-left:2em;}
         .table{width:100%;border-collapse:collapse;border-spacing:0;}
         .table td,table th{border:1px solid #ccc;text-align:center;padding:5px 0;}
@@ -20,7 +21,6 @@
     </style>
 </head>
 <body>
-<p class="XSmini" style="font-size:26px;">散文阅读：致富礼品晶嫁。数控制滚动性能望荛芽攀登进展分别奇妙提供步准情明能露集合官方神浏览器的插件加速视频解码对象像猫狗一样的杰楼缺群会出家为不字学长城每静春创段我断拯救国际标准实现</p>
 
 <section class="一个3d动画" style="margin-left:400px;">
     <style>
@@ -133,49 +133,59 @@
     <li>...</li>
 </ul>
 
+<h4>transition 过渡</h4>
+<section></section>
+
+<h4>animation 动画</h4>
+<section></section>
+
+<h4>gradient 渐变</h4>
+<section></section>
+
 <h4>transform:Matrix(2d)</h4>
 <section>
-    <label>位移： x <input type="number" placeholder="px" id="translateX"> y <input type="number" placeholder="px" id="translateY"></label> (translate)<br>
-    <label>缩放： x <input type="number" placeholder="倍数" id="scaleX"> y <input type="number" placeholder="倍数" id="scaleY"></label> (scale)<br>
-    <label>拉伸： x <input type="number" placeholder="deg" id="skewX"> y <input type="number" placeholder="deg" id="skewY"></label> (skew)<br>
+    <ul class="navlist2"> <li>派生方法：</li> <li>translate: translateX | translateY</li> <li>scale: scaleX | scaleY</li> <li>skew: skewX | skewY</li> <li>rotate</li> </ul>
+    <label>位移： x <input type="number" placeholder="px" id="translate_x"> y <input type="number" placeholder="px" id="translate_y"></label> (translate)<br>
+    <label>缩放： x <input type="number" placeholder="倍数" id="scale_x"> y <input type="number" placeholder="倍数" id="scale_y"></label> (scale)<br>
+    <label>斜切： x <input type="number" placeholder="deg" id="skew_x"> y <input type="number" placeholder="deg" id="skew_y"></label> (skew)<br>
     <label>旋转： <span style="color:transparent;">x</span> <input type="number" placeholder="deg" id="rotate"> <span style="visibility: hidden;">y <input type="number" placeholder="deg"></span> (rotate)</label><br>
     <button style="padding:.3em 1em;" id="sbt">go!</button>
 
     <div style="height:20px;"></div>
     <div style="border:2px solid red;background:black;width:50px;height:50px;" id="div"></div>
     <script>
-        // matrix( a,      b,      c,       d,        e,           f          );
+        // matrix( a,       b,        c,         d,         e,            f          );
 
-        // matrix( 1,      0,      0,       1,        translateX,  translateY );   //位移
-        // matrix( scaleX, 0,      0,       scaleY,   0,           0          );   //缩放
-        // matrix( 1,      tan⍬y,  tan⍬x,  1,        0,           0          );   //拉抻
-        // matrix( cos⍬,   sin⍬,  -sin⍬,  cos⍬,     0,           0          );   //旋转
+        // matrix( 1,       0,        0,         1,         translate_x,  translate_y );  //位移
+        // matrix( scale_x, 0,        0,         scale_y,   0,            0          );   //缩放
+        // matrix( 1,       tan⍬y,   tan⍬x,     1,         0,            0          );   //斜切
+        // matrix( cos⍬,    sin⍬,    -sin⍬,    cos⍬,      0,            0          );   //旋转
 
-        // matrix( scaleX, tan⍬y, tan⍬x,  scaleY,    translateX,  translateY );   //把缩放和位移和拉抻能写到一块
-                                                                                   //位移和谁都能写到一块
+        // matrix( scale_x, tan⍬y,   tan⍬x,    scale_y,    translate_x,  translate_y );   //把缩放和位移和斜切 写到一块
+                                                                                           //位移和谁都能写到一块
 
         let a,b,c,d,e,f;
         const $ = id => document.querySelector('#'+id),
-            $translateX = $('translateX'),
-            $translateY = $('translateY'),
-            $scaleX = $('scaleX'),
-            $scaleY = $('scaleY'),
-            $skewX = $('skewX'),
-            $skewY = $('skewY'),
+            $translate_x = $('translate_x'),
+            $translate_y = $('translate_y'),
+            $scale_x = $('scale_x'),
+            $scale_y = $('scale_y'),
+            $skew_x = $('skew_x'),
+            $skew_y = $('skew_y'),
             $rotate = $('rotate'),
             $div =  $('div');
         $('sbt').onclick = () => {
             let styleStr = '';
 
-            e = $translateX.value || 0, f = $translateY.value || 0, a = $scaleX.value || 1, d = $scaleY.value || 1;
+            e = $translate_x.value || 0, f = $translate_y.value || 0, a = $scale_x.value || 1, d = $scale_y.value || 1;
 
-            b = $skewY .value || 0;
+            b = $skew_y .value || 0;
             b = Math.PI / 180 * b;
             b = Math.tan(b);
-            c = $skewX .value || 0;
+            c = $skew_x .value || 0;
             c = Math.PI / 180 * c;
             c = Math.tan(c);
-            //位移、缩放、拉抻
+            //位移、缩放、斜切
             styleStr += `matrix(${a},${b},${c},${d},${e},${f})`;
 
             f = $rotate.value || 0;
@@ -191,5 +201,27 @@
         };
     </script>
 </section>
+
+<h4>transform:Matrix3d</h4>
+<section></section>
+
+<h4>弹性盒子(Flex Box)</h4>
+<section></section>
+
+<h4>CSS3 多列</h4>
+<section></section>
+
+<h4>@media 多媒体查询</h4>
+<section></section>
+
+<details>
+    <summary>好玩新属性列举</summary>
+    <ul class="navlist2">
+        <li>原生变量var</li>
+    </ul>
+</details>
+
+<p class="XSmini" style="font-size:26px;">散文赏析：致富礼品晶嫁。数控制滚动性能望荛芽攀登进展分别奇妙提供步准情明能露集合官方神浏览器的插件加速视频解码对象像猫狗一样的杰楼缺群会出家为不字学长城每静春创段我断拯救国际标准实现</p>
+
 </body>
 </html>

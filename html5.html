@@ -20,7 +20,6 @@
     </style>
 </head>
 <body>
-<p class="XSmini" style="font-size:26px;">散文阅读：致富礼品晶嫁。数控制滚动性能望荛芽攀登进展分别奇妙提供步准情明能露集合官方神浏览器的插件加速视频解码对象像猫狗一样的杰楼缺群会出家为不字学长城每静春创段我断拯救国际标准实现</p>
 <h1>HTML5</h1>
 <ul class="navlist">
     <li>新元素</li>
@@ -548,6 +547,12 @@
     </script>
 </section>
 
+<h4>Canvas3D :</h4>
+<div>Canvas3D</div>
+
+<h4>Canvas :</h4>
+<div>之前做过</div>
+
 <h4>Svg :</h4>
 <div>
     <svg width="140" height="170" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -674,17 +679,51 @@
     </table>
 </div>
 
+<h4>Web Notification(桌面通知)</h4>
+<section>
+    <button id="button_ntfi">有人想加你为好友</button>
+    <p id="text_ntfi"></p>
+    <script>
+        if (window.Notification) {
+            var button_ntfi = document.getElementById('button_ntfi'), text_ntfi = document.getElementById('text_ntfi');
+
+            var popNotice = function() {
+                if (Notification.permission == "granted") {
+                    var notification = new Notification("Hi，帅哥：", {
+                        body: '可以加你为好友吗？',
+                        icon: 'http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg'
+                    });
+
+                    notification.onclick = function() {
+                        text_ntfi.innerHTML = '张小姐已于' + new Date().toTimeString().split(' ')[0] + '加你为好友！';
+                        notification.close();
+                    };
+                }
+            };
+
+            button_ntfi.onclick = function() {
+                if (Notification.permission == "granted") {
+                    popNotice();
+                } else if (Notification.permission != "denied") {
+                    Notification.requestPermission(function (permission) {
+                      popNotice();
+                    });
+                }
+            };
+        }
+    </script>
+</section>
+
 <h4>Websocket :</h4>
 <section>之前做过</section>
-
-<h4>Canvas :</h4>
-<div>之前做过</div>
 
 <h4>Strorage :</h4>
 <div>之前做过</div>
 
 <h4>Video & Audio :</h4>
 <div>之前做过</div>
+
+<p class="XSmini" style="font-size:26px;">散文赏析：致富礼品晶嫁。数控制滚动性能望荛芽攀登进展分别奇妙提供步准情明能露集合官方神浏览器的插件加速视频解码对象像猫狗一样的杰楼缺群会出家为不字学长城每静春创段我断拯救国际标准实现</p>
 
 </body>
 </html>
